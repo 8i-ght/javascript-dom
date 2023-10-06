@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiple Buttons</title>
+</head>
+<body>
+    
+    <!-- Exercise 3 -->
+    <button class="btn_onclick">Button 1</button>
+    <button class="btn_onclick">Button 2</button>
+    <button class="btn_onclick">Button 3</button>
+    
+    <!-- Exercise 4-->
+    <button id="alertMe">Click Me</button>
+   
+    <!-- Exercise 5 -->
+    <input type="text" id="textInput" />
+    <p id="textDisplay"></p>
+
+    <!-- Exercise 6 -->
+    <ul id="itemList" style="background-color: gray;"></ul>
+    <script>
+
+        // exercise 3
+        let col = 0;
+        const allBtns = document.querySelectorAll(".btn_onclick");
+        
+        allBtns.forEach((button) => {
+            button.addEventListener('click', () => {
+                if(col ==0) {
+                    document.body.style.backgroundColor = "pink";
+                    col = 1;
+                } else {
+                    document.body.style.backgroundColor = "purple";
+                    col = 0;
+                }  
+            })
+        });
+
+        // exercise 4
+        const alertMe = document.getElementById("alertMe");
+
+        function alertFunction() {
+            alert ("Button was clicked!");
+        }
+
+        alertMe.addEventListener("click", alertFunction);
+
+        // exercise 5
+        const input = document.getElementById("textInput");
+        const display = document.getElementById("textDisplay");
+
+        input.addEventListener("input", updateDisplay);
+
+        function updateDisplay(e) {
+            display.textContent = e.target.value
+        }
+    
+        // exercise 6
+        const items = [
+            {name: 'Item 1'},
+            {name: 'Item 2'},
+            {name: 'Item 3'},
+            {name: 'Item 4'}
+        ];
+
+        const list = document.getElementById('itemList');
+
+        for (let i = 0; i < items.length; i++) {
+            const li = document.createElement('li');
+            li.innerText = items[i].name;
+            list.appendChild(li);
+        }
+    </script>
+</body>
+</html>
